@@ -49,7 +49,8 @@ class Pokemon:
             print(f"{Style.NORMAL}{Fore.YELLOW}Abilities:")
             for i, ability in enumerate(self.abilities, start=1):
                 print(f"{Style.NORMAL}{Fore.WHITE}{"Ability #"}{(i):<5} {Style.BRIGHT}{Fore.CYAN}{ability.name} - {ability.effect}")
-        print(f"{Style.NORMAL}{Fore.YELLOW}{"Abilities:":<14}{Style.BRIGHT}{Fore.CYAN} None")    
+        else:
+            print(f"{Style.NORMAL}{Fore.YELLOW}{"Abilities:":<14}{Style.BRIGHT}{Fore.CYAN} None")
         print(f"{Style.NORMAL}{Fore.YELLOW}{"Retreat Cost:":<14} {Style.BRIGHT}{Fore.CYAN}{self.retreat}")   
         print(f"{Style.NORMAL}{Fore.YELLOW}       Legal")
         print(f"{Style.NORMAL}{Fore.YELLOW}{"Standard:":<14} {Style.BRIGHT}{Fore.CYAN}{self.legal.standard}")
