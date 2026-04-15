@@ -94,8 +94,18 @@ Y/N would you like to search for another card? -> n
 
 ## Notes
 - You can only search by card name (ie. "N", "Charizard V", "Fishing Net")
-- Abilities text is not formated to remain on the right hand side.
-- Future iterations are intened to include I/O to allow users to save data.
+- Abilities text is not formatted to remain on the right hand side.
+- Future iterations are intended to include I/O to allow users to save data.
+
+## Errors with TCGDex API
+In the event the API call fails, you will be prompted with:
+```
+ERROR! - {Error Message}
+API Call Has Failed. Type CLS to close the program
+Enter the name of your card ->
+```
+
+You may choose to enter "CLS" to close the program.
 
 ## Attributions
 
@@ -111,3 +121,6 @@ Y/N would you like to search for another card? -> n
 - Furthered OOP understanding
 - Furthered formatting and colorama use
 - Pushing iterations to GitHub
+- Error handling with APIs using try/except
+- Using Except as e to output a clean error without crashing the code
+- Git workflow and commits through VS Code
