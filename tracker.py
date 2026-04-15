@@ -66,8 +66,12 @@ class Pokemon:
 
 
 def search_card(name):
-    cards = tcgdex.card.listSync(Query().equal("name", name)) # locate the cards with that name
-    return cards
+    try:
+        cards = tcgdex.card.listSync(Query().equal("name", name)) # locate the cards with that name
+        return cards
+    except Exception as e:
+        print(f"{Fore.RED} ERROR! - {e}")
+        return None
 
 def displayOptions(data):
     for i, card in enumerate(data, start=1):
@@ -106,7 +110,13 @@ def main():
     while True:
         searchItem = input("Enter the name of your card -> ")
         searchItem = searchItem.title()
+        if searchItem == "Cls":
+            print(f"{Fore.YELLOW}User has opted to close the program.")
+            break
         data = search_card(searchItem)
+        if data is None:
+            print(f"{Fore.RED} API Call Has Failed. Type CLS to close the program")
+            continue
         if not data:
             print(f"{Fore.RED}Error! {searchItem} is not in the TCGdex!")
             continue
