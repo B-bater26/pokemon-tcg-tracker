@@ -7,6 +7,7 @@ A CLI tool that calls tcgdexsdk API to display information about Pokemon cards.
 - The user selects the card they want by entering a number in the list.
 - The API is called and retrieves card data for the specified card.
 - The user is given an output of formatted data.
+- The user can save Pokemon to the PokeStorage.txt file.
 - The user can chose to search for another card or end the program.
 
 ## Requirements
@@ -88,14 +89,16 @@ Retreat Cost:  3
        Legal
 Standard:      False
 Expanded:      False
+Would you like to store this in your PokeStorage? [Y/N] -> y
+ Card has been added to PokeStorage.txt!
 Y/N would you like to search for another card? -> n
 ==========POKEMON TCG CARD LOCATOR==========
 ```
 
 ## Notes
 - You can only search by card name (ie. "N", "Charizard V", "Fishing Net")
+- PokeStorage.txt can be used to store the names of your saved Pokemon
 - Abilities text is not formatted to remain on the right hand side.
-- Future iterations are intended to include I/O to allow users to save data.
 
 ## Errors with TCGDex API
 In the event the API call fails, you will be prompted with:
@@ -111,6 +114,8 @@ You may choose to enter "CLS" to close the program.
 
 [TCGDex API](https://tcgdex.dev/)
 
+[Pokemon - Nintendo](https://www.pokemon.com/us)
+
 
 ## What This Taught Me
 - Calling APIs
@@ -124,3 +129,5 @@ You may choose to enter "CLS" to close the program.
 - Error handling with APIs using try/except
 - Using Except as e to output a clean error without crashing the code
 - Git workflow and commits through VS Code
+- I/O handling and saving data to files
+- Incremental design
