@@ -6,19 +6,18 @@
 #              tcgdexsdk API and allows the user
 #              to find out information about
 #              their card.
-# Updated: 4/16/26 - By Bailey Baxter
+# Updated: 4/17/26 - By Bailey Baxter
 # ===============================================
 
+import os
 
-from colorama import Fore, Style, init
+from colorama import Fore, Style, Back, init
 from tcgdexsdk import TCGdex, Query
 
 init(autoreset=True)
 
 tcgdex = TCGdex("en") # English deck
-
-
-        
+      
         
 class Pokemon:
     def __init__(self, cardID):
@@ -76,10 +75,37 @@ class PokeStorage:
         try:
             with open(self.storageFile, "a", encoding="utf-8") as f:
                 f.write(f"{card.name} | {card.rarity}{card.symbol} | {card.setName} | {card.cardID}\n")
-            f.close()
             print(f"{Fore.GREEN} Card has been added to {self.storageFile}!")
         except Exception as e:
             print(f"{Fore.RED} ERROR! - {e}")
+
+    def createUserFileHead(self):
+        nameUser = ""
+        checkName = ""
+        while nameUser == "":
+            nameUser = input("Please enter your name to create your file -> ").strip()
+            if nameUser != "":
+                while checkName != "Y" and checkName != "N":
+                    checkName = input(f"{Style.BRIGHT}Is {Back.YELLOW}{nameUser}{Back.RESET} correct Y/N -> {Style.NORMAL}").upper()
+                if checkName == "Y":
+                    with open(self.storageFile, "a", encoding="utf-8") as f:
+                        f.write(f"{nameUser}'s PokeStorage:\n\n")
+                else:
+                    nameUser = ""
+                    checkName = ""
+            
+
+                    
+
+
+    def checkStorage(self):
+        if not os.path.exists(self.storageFile):
+            self.createUserFileHead()
+        else:
+            with open(self.storageFile, "r", encoding="utf-8") as f:
+                contents = f.read()
+                if contents == "":
+                    self.createUserFileHead()
 
 
 def search_card(name):
@@ -130,15 +156,11 @@ def askToStore():
     else:
         return False
     
-def createPokeStorage():
-    userStorage = PokeStorage()
-    return userStorage
-
 
 
 def main():
     print(f"{Fore.CYAN}{"="*10}{Fore.RED}{Style.BRIGHT}POKEMON TCG CARD LOCATOR{Fore.CYAN}{Style.NORMAL}{"="*10}")
-    userStorage = createPokeStorage()
+    userStorage = PokeStorage()
     while True:
         searchItem = input("Enter the name of your card -> ")
         searchItem = searchItem.title()
@@ -158,6 +180,7 @@ def main():
         newPokemon.displayCard()
         startStorage = askToStore()
         if startStorage:
+            userStorage.checkStorage()
             userStorage.addCard(newPokemon)
         restart = anotherCard()
         if not restart:
