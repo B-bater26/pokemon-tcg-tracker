@@ -90,6 +90,8 @@ Retreat Cost:  3
 Standard:      False
 Expanded:      False
 Would you like to store this in your PokeStorage? [Y/N] -> y
+Please enter your name to create your file -> {Name}
+Is {Name} correct Y/N -> Y
  Card has been added to PokeStorage.txt!
 Y/N would you like to search for another card? -> n
 ==========POKEMON TCG CARD LOCATOR==========
@@ -98,6 +100,7 @@ Y/N would you like to search for another card? -> n
 ## Notes
 - You can only search by card name (ie. "N", "Charizard V", "Fishing Net")
 - PokeStorage.txt can be used to store the names of your saved Pokemon
+- The first time you use PokeStorage, you will be prompted to input your name. Your name will appear at the top of your file.
 - Abilities text is not formatted to remain on the right hand side.
 
 ## Errors with TCGDex API
@@ -130,4 +133,5 @@ You may choose to enter "CLS" to close the program.
 - Using Except as e to output a clean error without crashing the code
 - Git workflow and commits through VS Code
 - I/O handling and saving data to files
+- Retaining user data
 - Incremental design
